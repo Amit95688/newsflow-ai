@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>Hacker News Summaries</h1>
+<p class="muted">Stories and summaries loaded from your local SQLite database.</p>
+
+<div class="grid">
+	<section>
+		<h2>Top Stories</h2>
+		{% if top_summaries %}
+			{% for story in top_summaries %}
+				<article class="card">
+					<h3 class="story-title">{{ story.title or "Untitled Story" }}</h3>
+					<div class="meta">
+						by {{ story.author or "unknown" }} · score {{ story.score or 0 }} ·
+						<a href="{{ story.url }}" target="_blank" rel="noopener noreferrer">Read source</a>
+					</div>
+					<div class="summary">{{ story.summary or "No summary available." }}</div>
+				</article>
+			{% endfor %}
+		{% else %}
+			<p>No top story summaries found in database.</p>
+		{% endif %}
+	</section>
+
+	<section>
+		<h2>Best Stories</h2>
+		{% if best_summaries %}
+			{% for story in best_summaries %}
+				<article class="card">
+					<h3 class="story-title">{{ story.title or "Untitled Story" }}</h3>
+					<div class="meta">
+						by {{ story.author or "unknown" }} · score {{ story.score or 0 }} ·
+						<a href="{{ story.url }}" target="_blank" rel="noopener noreferrer">Read source</a>
+					</div>
+					<div class="summary">{{ story.summary or "No summary available." }}</div>
+				</article>
+			{% endfor %}
+		{% else %}
+			<p>No best story summaries found in database.</p>
+		{% endif %}
+	</section>
+</div>
+{% endblock %}
