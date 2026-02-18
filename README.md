@@ -189,5 +189,3 @@ SUMMARY_WORKERS=4
 MIT
 
 ---
-
-Built with 💻 + 🧠 AI
