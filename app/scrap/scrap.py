@@ -1,4 +1,5 @@
 import requests
+from bs4 import BeautifulSoup
 
 BASE_URL = "https://hacker-news.firebaseio.com/v0"
 
@@ -8,12 +9,18 @@ def fetch_story(story_id: int) -> dict:
     response.raise_for_status()
     story = response.json()
 
+    raw_text = story.get("text") or ""
+    clean_text = ""
+    if raw_text:
+        clean_text = BeautifulSoup(raw_text, "html.parser").get_text(" ", strip=True)
+
     return {
         "id": story_id,
         "title": story.get("title") or "Untitled",
         "author": story.get("by") or "unknown",
         "score": story.get("score") or 0,
         "url": story.get("url") or "",
+        "text": clean_text,
     }
 
 

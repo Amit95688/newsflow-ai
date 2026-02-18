@@ -1,44 +1,144 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h1>Hacker News Summaries</h1>
-<p class="muted">Stories and summaries loaded from your local SQLite database.</p>
+<link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+    crossorigin="anonymous"
+/>
 
-<div class="grid">
-	<section>
-		<h2>Top Stories</h2>
-		{% if top_summaries %}
-			{% for story in top_summaries %}
-				<article class="card">
-					<h3 class="story-title">{{ story.title or "Untitled Story" }}</h3>
-					<div class="meta">
-						by {{ story.author or "unknown" }} · score {{ story.score or 0 }} ·
-						<a href="{{ story.url }}" target="_blank" rel="noopener noreferrer">Read source</a>
-					</div>
-					<div class="summary">{{ story.summary or "No summary available." }}</div>
-				</article>
-			{% endfor %}
-		{% else %}
-			<p>No top story summaries found in database.</p>
-		{% endif %}
-	</section>
+<style>
+    .dashboard-hero {
+        background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+        padding: 28px 24px;
+        margin-bottom: 24px;
+    }
 
-	<section>
-		<h2>Best Stories</h2>
-		{% if best_summaries %}
-			{% for story in best_summaries %}
-				<article class="card">
-					<h3 class="story-title">{{ story.title or "Untitled Story" }}</h3>
-					<div class="meta">
-						by {{ story.author or "unknown" }} · score {{ story.score or 0 }} ·
-						<a href="{{ story.url }}" target="_blank" rel="noopener noreferrer">Read source</a>
-					</div>
-					<div class="summary">{{ story.summary or "No summary available." }}</div>
-				</article>
-			{% endfor %}
-		{% else %}
-			<p>No best story summaries found in database.</p>
-		{% endif %}
-	</section>
+    .dashboard-hero h1 {
+        margin-bottom: 8px;
+        font-size: 2rem;
+    }
+
+    .dashboard-hero p {
+        margin: 0;
+        color: #4b5563;
+    }
+
+    .story-column-title {
+        margin: 0 0 12px;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #111827;
+    }
+
+    .story-card {
+        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+        box-shadow: 0 6px 16px rgba(17, 24, 39, 0.06);
+        margin-bottom: 16px;
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .story-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 20px rgba(17, 24, 39, 0.1);
+    }
+
+    .story-card .card-body {
+        padding: 16px;
+    }
+
+    .story-card .story-title {
+        margin: 0 0 8px;
+        font-size: 1.05rem;
+        line-height: 1.35;
+    }
+
+    .story-card .meta {
+        font-size: 0.85rem;
+        color: #6b7280;
+        margin-bottom: 10px;
+    }
+
+    .story-card .summary {
+        line-height: 1.55;
+        color: #374151;
+        white-space: pre-wrap;
+    }
+
+    .story-card .badge {
+        font-weight: 500;
+        margin-right: 6px;
+    }
+
+    .empty-card {
+        border: 1px dashed #cbd5e1;
+        border-radius: 10px;
+        background: #f8fafc;
+        padding: 18px;
+        color: #64748b;
+    }
+</style>
+
+<section class="dashboard-hero">
+    <h1>Hacker News Summaries</h1>
+    <p>Top and best stories with AI summaries from your local SQLite database.</p>
+</section>
+
+<div class="row">
+    <section class="col-lg-6">
+        <h2 class="story-column-title">Top Stories</h2>
+        {% if top_summaries %}
+            {% for story in top_summaries %}
+                <article class="card story-card">
+                    <div class="card-body">
+                        <h3 class="story-title">
+                            {% if story.url %}
+                                <a href="{{ story.url }}" target="_blank" rel="noopener noreferrer">{{ story.title }}</a>
+                            {% else %}
+                                {{ story.title }}
+                            {% endif %}
+                        </h3>
+                        <div class="meta">
+                            <span class="badge badge-pill badge-info">Score {{ story.score }}</span>
+                            By {{ story.author }} · ID {{ story.id }}
+                        </div>
+                        <div class="summary">{{ story.summary or "Summary not available yet." }}</div>
+                    </div>
+                </article>
+            {% endfor %}
+        {% else %}
+            <div class="empty-card">No top stories found in the database.</div>
+        {% endif %}
+    </section>
+
+    <section class="col-lg-6">
+        <h2 class="story-column-title">Best Stories</h2>
+        {% if best_summaries %}
+            {% for story in best_summaries %}
+                <article class="card story-card">
+                    <div class="card-body">
+                        <h3 class="story-title">
+                            {% if story.url %}
+                                <a href="{{ story.url }}" target="_blank" rel="noopener noreferrer">{{ story.title }}</a>
+                            {% else %}
+                                {{ story.title }}
+                            {% endif %}
+                        </h3>
+                        <div class="meta">
+                            <span class="badge badge-pill badge-success">Score {{ story.score }}</span>
+                            By {{ story.author }} · ID {{ story.id }}
+                        </div>
+                        <div class="summary">{{ story.summary or "Summary not available yet." }}</div>
+                    </div>
+                </article>
+            {% endfor %}
+        {% else %}
+            <div class="empty-card">No best stories found in the database.</div>
+        {% endif %}
+    </section>
 </div>
 {% endblock %}

@@ -1,9 +1,13 @@
+from pathlib import Path
+
 from sqlalchemy import create_engine, String, Integer, Text, event
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 # SQLite database for local storage
+DB_PATH = Path(__file__).resolve().parents[2] / "hn_stories.db"
+
 engine = create_engine(
-    "sqlite:///hn_stories.db",
+    f"sqlite:///{DB_PATH}",
     echo=False,
     connect_args={"timeout": 30},
 )
