@@ -1,5 +1,5 @@
-# 🚀 H-GEN-AI
-
+# 🚀 newsflow-ai
+> AI-powered Hacker News summarization pipeline  
 ![Python](https://img.shields.io/badge/Python-3.11+-blue?style=for-the-badge&logo=python)
 ![Flask](https://img.shields.io/badge/Flask-Production_Server-000000?style=for-the-badge&logo=flask)
 ![LangChain](https://img.shields.io/badge/LangChain-Agentic_AI-00C853?style=for-the-badge)
@@ -9,8 +9,6 @@
 ![RAG Ready](https://img.shields.io/badge/RAG-Ready-FF9800?style=for-the-badge)
 ![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker)
 ![CI/CD](https://img.shields.io/badge/CI/CD-Automated-2088FF?style=for-the-badge&logo=github-actions)
-
-> AI-powered Hacker News summarization pipeline  
 
 ---
 
