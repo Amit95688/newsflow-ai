@@ -1,4 +1,4 @@
-# 🚀 newsflow-ai
+# 🚀 Newsflow-ai
 > AI-powered Hacker News summarization pipeline  
 ![Python](https://img.shields.io/badge/Python-3.11+-blue?style=for-the-badge&logo=python)
 ![Flask](https://img.shields.io/badge/Flask-Production_Server-000000?style=for-the-badge&logo=flask)
