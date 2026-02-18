@@ -10,10 +10,10 @@ def fetch_story(story_id: int) -> dict:
 
     return {
         "id": story_id,
-        "title": story.get("title"),
-        "author": story.get("by"),
-        "score": story.get("score"),
-        "url": story.get("url"),
+        "title": story.get("title") or "Untitled",
+        "author": story.get("by") or "unknown",
+        "score": story.get("score") or 0,
+        "url": story.get("url") or "",
     }
 
 
