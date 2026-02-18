@@ -1,7 +1,16 @@
 # 🚀 H-GEN-AI
 
+![Python](https://img.shields.io/badge/Python-3.11+-blue?style=for-the-badge&logo=python)
+![Flask](https://img.shields.io/badge/Flask-Production_Server-000000?style=for-the-badge&logo=flask)
+![LangChain](https://img.shields.io/badge/LangChain-Agentic_AI-00C853?style=for-the-badge)
+![Ollama](https://img.shields.io/badge/Ollama-Local_Inference-111111?style=for-the-badge)
+![Llama3](https://img.shields.io/badge/Llama3-3B_Model-8E44AD?style=for-the-badge)
+![SQLite](https://img.shields.io/badge/SQLite-Lightweight_DB-003B57?style=for-the-badge&logo=sqlite)
+![RAG Ready](https://img.shields.io/badge/RAG-Ready-FF9800?style=for-the-badge)
+![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker)
+![CI/CD](https://img.shields.io/badge/CI/CD-Automated-2088FF?style=for-the-badge&logo=github-actions)
+
 > AI-powered Hacker News summarization pipeline  
-> Fully local • Dockerized • LLM-driven • Clean architecture
 
 ---
 
